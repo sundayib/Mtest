@@ -130,12 +130,10 @@
 
         // Function to toggle main TWA button
         function toggleMainButton() {
-            if (Telegram.WebApp.MainButton.isVisible) {
-                Telegram.WebApp.MainButton.hide();
-            } else {
-                Telegram.WebApp.MainButton.show();
-            }
-        };
+            Telegram.WebApp.setBackgroundColor('46,46,46');
+            
+                
+        }
 
         function setViewportData() {
             var sizeEl = document.getElementById('viewport-params-size');
@@ -146,7 +144,7 @@
             expandEl.innerText = 'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
         }
 
-        Telegram.WebApp.setHeaderColor('secondary_bg_color');
+        Telegram.WebApp.setHeaderColor('0,0,0');
 
         setViewportData();
         Telegram.WebApp.onEvent('viewportChanged', setViewportData);
