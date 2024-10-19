@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Telegram Mini Apps Vanilla JS Sample App</title>
-    
+    <style>
+        
+            
+    </style>
 </head>
 
 <body>
     <main>
         
         <h1>Modals</h1>
-        <button onclick="Telegram.WebApp.showAlert(Telegram.WebApp.initData.user);">Launch Alert</button>
+        <button onclick="Telegram.WebApp.showAlert('Hello World!');">Launch Alert</button>
         <p/>
         <button onclick="showPopup();">Launch Popup</button>
 
@@ -31,32 +34,32 @@
 
         <h1></h1>
         <button onclick="Telegram.WebApp.expand();">Expand Webview</button>
-        <button onclick="ton();">Toggle Main Button</button>
+        <button onclick="ff();">Toggle Main Button</button>
     </main>
-    <div id="viewport"></div>
-    <div id="viewport-params-size"></div>
-    <div id="viewport-params-expand"></div>
+    
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- Eruda is console for mobile browsers -->
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    
+    
     <script>
-    string bt="button";
+    
         // Init TWA
-        Telegram.WebApp.ready();
+       // Telegram.WebApp.ready();
 
+        //function ff(){alert('hello');}
+
+        // Function to toggle main TWA button
+        function ff() {  Telegram.WebApp.setBackgroundColor(46,46,46);
         
-
-        function ton() {
-            Telegram.WebApp.setBackgroundColor('46,46,46');
-            
-                
+Telegram.WebApp.setHeaderColor('46,46,46');
         }
+       Telegram.WebApp.setHeaderColor('46,46,46');
 
-        
         
 
     </script>
 
-    <!-- Eruda is console for mobile browsers -->
-    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init();</script>
 </body>
 </html>
