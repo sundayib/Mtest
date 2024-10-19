@@ -3,7 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+    
     <title>Telegram Mini Apps Vanilla JS Sample App</title>
     <style>
         
@@ -11,30 +16,17 @@
     </style>
 </head>
 
-<body>
+<body style="background:red">
     <main>
         
-        <h1>Modals</h1>
-        <button onclick="Telegram.WebApp.showAlert('Hello World!');">Launch Alert</button>
-        <p/>
-        <button onclick="showPopup();">Launch Popup</button>
-
-        <h1>Links</h1>
-        <ul>
-            <li>
-                <a href="javascript:Telegram.WebApp.openTelegramLink('https://t.me/trendingapps');">Open link within Telegram</a>
-            </li>
-            <li>
-                <a href="javascript:Telegram.WebApp.openLink('https://ton.org/');">Open link in external browser</a>
-            </li>
-            <li>
-                <a href="javascript:Telegram.WebApp.openLink('https://telegra.ph/api',{try_instant_view:true});">Open link inside Telegram webview</a>
-            </li>
-        </ul>
-
-        <h1></h1>
-        <button onclick="Telegram.WebApp.expand();">Expand Webview</button>
-        <button onclick="ff();">Toggle Main Button</button>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        <button onclick="aa();">Expand Webview</button>
+        <button onclick="sv();">Toggle Main Button</button>
     </main>
     
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -44,12 +36,21 @@
     
     
     <script>
-    
+    var tut="tutt";
         // Init TWA
-       // Telegram.WebApp.ready();
+       
 
-        //function ff(){alert('hello');}
+        function aa(){
+    Telegram.WebApp.getItem("key1", function (err,res) {alert(res);});
+            
+            
+        }
 
+    function sv(){
+        
+      Telegram.WebApp.setItem('key1', 12356, function(err,saved){  alert(saved);  });
+        
+    }
         // Function to toggle main TWA button
         function ff() {  Telegram.WebApp.setBackgroundColor(46,46,46);
         
@@ -58,7 +59,7 @@ Telegram.WebApp.setHeaderColor('46,46,46');
        Telegram.WebApp.setHeaderColor('46,46,46');
 
         
-
+   Telegram.WebApp.ready();
     </script>
 
 </body>
