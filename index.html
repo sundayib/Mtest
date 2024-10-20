@@ -17,14 +17,14 @@
 </br>
 
   </br>
-    <p id="view">null</p>
+    <p id="view">5555ll</p>
     <button onclick="cl();">load data</button>
 
 <script>
 
 // cloud storage
 
-
+/*
         initData      : Telegram.WebApp.initData || '',
         initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
         MainButton: Telegram.WebApp.MainButton,
@@ -47,12 +47,12 @@
         }
 
         
-                    
+          */          
       function  cl() {
            
-            document.getElementById("view").innerHTML="ttttt";
+            //document.getElementById("view").innerHTML="ttttt";
                     
-            Telegram.WebApp.CloudStorage.getItem(key2, function(err, saved) {
+            Telegram.WebApp.CloudStorage.getItem("key2", function(err, saved) {
                 if (err) {
                     document.getElementById("view").innerHTML=err;
                     
