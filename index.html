@@ -17,6 +17,7 @@
 </br>
 
   </br>
+    <p id="view">null</p>
     <button onclick="cl();">load data</button>
 
 <script>
@@ -47,13 +48,22 @@
 
         
                     
-        cl() {
+      function  cl() {
            
-            
+            document.getElementById("view").innerHTML="ttttt";
+                    
             Telegram.WebApp.CloudStorage.getItem(key2, function(err, saved) {
                 if (err) {
-                    alert('Error: ' + err);
-                } else {  alert(saved);}
+                    document.getElementById("view").innerHTML=err;
+                    
+                    //alert('Error: ' + err);
+                } else { 
+                  document.getElementById("view").innerHTML=saved;
+                    
+                    //alert(saved);
+                    
+                    
+                }
                     
             });
         }
