@@ -19,6 +19,7 @@
   </br>
     <p id="view">6666</p>
     <button onclick="cl();">load data</button>
+<button onclick="c2();">load alert</button>
 
 <script>
 
@@ -49,12 +50,13 @@
         
           */    
     Telegram.WebApp.ready();
+    c2() {alert("hi") ;} 
       function  cl() {
            
             //document.getElementById("view").innerHTML="ttttt";
                     
             Telegram.WebApp.CloudStorage.getItem('key2', function(err, saved) {
-                if (err) {
+                if (err.length) {
                     document.getElementById("view").innerHTML=err;
                     
                     //alert('Error: ' + err);
