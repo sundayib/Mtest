@@ -139,7 +139,7 @@ function pageld(e){
 function showmovie(e)
 {
      movieUrl=e.id; 
-     moviePage= "https://mp4mania1.net/showmovie.php?id=" +e.name;      
+     moviePage= "https://mp4mania1.net/showmovie.php?id=15855" +e.name;      
      TaskToHandle= 1;    
      let msg='Watch or download the movie directly at the cost of 100,000 coins or visit the movie web page at zero cost. '+ movieUrl;
           let b1='Watch or dowload directly';
@@ -152,7 +152,7 @@ function showmovie(e)
 function showinvite()
 {
           TaskToHandle= 5;
-          msg='Get unlimited coins inviting as many frens as you can. Each invite earns you 100,000 coins per new user. Your referral link is : '+getrefcode();
+          msg='Get unlimited coins inviting as many frens as you can. Each invite earns you 100,000 coins per new user. You can copy your referral link below.';
     document.getElementById('bt1').innerHTML ='Copy referal link to clipboard';
     document.getElementById('bt2').innerHTML ='May be later';          
     document.getElementById('pop').innerHTML =msg;
@@ -227,11 +227,12 @@ function HandleTask(e)
           }   
   else if(TaskToHandle==4)
           { 
-                    alert('Task is web visit');
+                    alert('Task is yt subcription ');
           }
   else if(TaskToHandle==5)
           { 
-                    alert('Task is invite');
+                    navigator.clipboard.writeText("tessssss");
+                    alert('Referral link copied.');
           }
                               
           else
@@ -271,18 +272,18 @@ function getdt()
 var weekdt = new Date("16/Nov/2024 20:30:00");
 var now = new Date();
           
- if(weekdt.getTime()>now.getTime() || now.getTime()- weekdt.getTime()> 2580000000){ alert("Your phone date is not correct. Set it and try again."); close();}
-  if(now.getTime() -lastLogindt.getTime() > 2752000000 ) { autofarm=0; activedt=now; save("activedt",now.toString()); alert("It has been more than 30 days since your last login and because of this your bot coin has reset to zero. To avoid similar situation, try to login at least once every 30 days." )} 
+ if(weekdt.getTime()>now.getTime() || now.getTime()- weekdt.getTime()> 2580000000){ showAlert("Your phone date is not correct. Set it and try again."); close();}
+  if(now.getTime() -lastLogindt.getTime() > 2752000000 ) { autofarm=0; activedt=now; save("activedt",now.toString()); showAlert("It has been more than 30 days since your last login and because of this your bot coin has reset to zero. To avoid similar situation, try to login at least once every 30 days." )} 
  lastLogindt=now;
-
-    if(signUpdt.getTime() > now.getTime) save("signUpdt",now.toString());
-         // save("lastLogindt",now.toString());
+  save("activedt",now.toString()); 
+    if(signUpdt.getTime()-360 > now.getTime) save("signUpdt",now.toString());
+         // save("lastLogindt", lastLogindt.toString());
      //sec = diff - days * (1000 * 60 * 60 * 24);
           
           let d = new Date();
 let h = d.getHours() * 3600;
 let m = d.getMinutes() * 60;
- sec = d.getSeconds() + h + m; 
+ sec = d.getSeconds() + h  + m; 
           
           var diff = now.getTime() - activedt.getTime();
     autofarm= Math.floor((diff )/ (1000)) - sec;
@@ -309,11 +310,28 @@ getdt();
 
 
   
-   function getQuery()
+   function getQuery(isref=false)
 {
-const Params = new URLSearchParams(window.location.search);
-     
-          if(Params.has('ask'))
+ //Params = new URLSearchParams(window.location.search);
+    Params = window.Telegram.WebApp.initDataUnsafe.start_param;
+  
+           if(Params.has('ask'))
+          {
+           let [p1,p2]=   Params.split("_") ;  
+ if(ask1 == p2)  
+           {
+              Award() ;     
+           }                               
+          }
+        else if(Params.has('ref'))
+  {
+    let refcode=Params.split('_')[1];
+    save('ref',refcode);
+    //send bot msg
+     sendMsg(id+'===='+refcode);
+                               
+  }  else{if (isref)save('ref','noref');}
+        /*  if(Params.has('ask'))
           {
             let  askcode=Params.get('ask');
                     if(ask1 == askcode)  
@@ -335,7 +353,7 @@ const Params = new URLSearchParams(window.location.search);
             {
     save('ref','noref');
             }
-  }
+  }*/
 }
 
 function Award()
@@ -349,7 +367,7 @@ function save(key,value)
 Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                 if (err) 
                    {
-                     alert('Error: ' + err);
+                     showAlert('Error: ' + err);
                    } 
            else {
                     if (saved)
@@ -367,7 +385,7 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                     
                         Telegram.WebApp.CloudStorage.getItem(key, function(err, value) {
                             if (err) {
-                                alert('Error: ' + err);
+                                showAlert('Error: ' + err);
                             }
                           else {
                                 
@@ -384,47 +402,49 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
            let keys= ["autofarm","TaskCoins" ,"refId","ref","ask1","rwd","yts","signUpdt","activedt","lastLogindt"];
                         Telegram.WebApp.CloudStorage.getItems(keys, function(err, values) {
                             if (err) {
-                                alert('Error: ' + err);
+                                showAlert('Error: ' + err);
                             } else {
                                 
-                                    autofarm = values[keys[0]];
-                                    TaskCoins = values[keys[1]];
-                                    refId = values[keys[2]];
-                                    ref = values[keys[3]];  
-                                    ask1 = values[keys[4]];
-                                    rwd = values[keys[5]];  
-                                    yts = values[keys[6]];
-                                    signUpdt = new Date(values[keys[7]]);
-                                    activedt = new Date(values[keys[8]]);  
-                                    lastLogindt = new Date(values[keys[9]]);
+                           // if(goAhead(values[keys[0]])) autofarm = values[keys[0]]; else autofarm=0;
+                                   if(goAhead(values[keys[1]]))  TaskCoins = values[keys[1]]; else TaskCoins = 0;
+                                  if(goAhead(values[keys[2]]))   refId = values[keys[2]]; else refId = getrefcode();
+                                  if(goAhead(values[keys[3]]))   ref = values[keys[3]]; else ref = ""; 
+                                  if(goAhead(values[keys[4]]))   ask1 = values[keys[4]]; else ask1 = "";
+                                  if(goAhead(values[keys[5]]))   rwd = values[keys[5]]; else rwd = 0;
+                                  if(goAhead(values[keys[6]]))  yts = values[keys[6]]; else yts = 0;
+                                  if(goAhead(values[keys[7]]))   signUpdt = new Date(values[keys[7]]); else signUpdt = new Date("16/Nov/2026 20:30:00");
+                                   if(goAhead(values[keys[8]]))  activedt = new Date(values[keys[8]]);  else activedt = new Date() ;
+                                  if(goAhead(values[keys[9]]))   lastLogindt = new Date(values[keys[9]]); else lastLogindt = new Date();
                             }
                            
                         });
                     
         }
 
-
+ function goAhead(o)
+{
+  if(o.length > 2) return true;else return false;       
+}
 
 
    function  sendMsg(msg)
 {
-  
- fetch("https://api.telegram.org/bot{HTTP_API_TOKEN}/sendMessage?chat_id={CHAT_ID}&text={"+msg+"}")
+  Telegram.WebApp.sendData(msg);
+ /*fetch("https://api.telegram.org/bot{HTTP_API_TOKEN}/sendMessage?chat_id={CHAT_ID}&text={"+msg+"}")
   .then((response) => {
-    // If the response is not 2xx, throw an error
-    if (!response.ok) {
+     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-
-    // If the response is 200 OK, return the response in JSON format.
-    return response.json();
+            return response.json();
   })
-  .then((data) => console.log(data));// You can continue to do something to the response.
-  
+  .then((data) => console.log(data));
+  */
   
 }
 
-
+function showAlert(message) {
+            Telegram.WebApp.showAlert(message);
+        }
 
 
 
@@ -501,7 +521,7 @@ function nex()
 {
    
      ShowMovieList();   
-      if(movIndex==lis.length-9) alert("End of page reached");
+      if(movIndex==lis.length-9) showAlert("End of page reached");
     if(movIndex +10 <lis.length) movIndex+=10; else movIndex=lis.length-9;
     
 }
@@ -513,7 +533,7 @@ function prev()
      ShowMovieList();   
       
     }
-    else alert("You are already on the first page.");
+    else showAlert("You are already on the first page.");
 }
 
 function npage(){
