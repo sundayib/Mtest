@@ -1,6 +1,6 @@
 
 ej.base.registerLicense('Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH9ceXVRQ2BfU0VyXEA=');
-var sec=0,autofarm=0,TaskCoins=0,page=1,fname = 'Audu',msg='message',movieUrl,moviePage, TaskToHandle=1,refId="",ref="",ask1="",rwd=0,yts="";
+var sec=0,autofarm=0,TaskCoins=0,page=1,fname = 'Audu',msg='message',movieUrl="",moviePage="", TaskToHandle=1,refId="",ref="",ask1="",rwd=0,yts="";
 var signUpdt= new Date();
 var activedt= new Date("9/Nov/2024 00:00:00");
 	var lastLogindt= new Date();
@@ -47,7 +47,8 @@ const tmer =setInterval(txt, 1000);
 function initfunc()
 {
     try{   
-  lditems();               
+  lditems();   
+Telegram.WebApp.Ready() ;             
      Telegram.WebApp.disableVerticalSwipes(); 
      initData= Telegram.WebApp.initData;    
       id=  Telegram.WebApp.initData.Id;  
@@ -455,7 +456,7 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
 
 function showAlert(message) {
          
-            Telegram.WebApp.showAlert("V1 "+message);
+            Telegram.WebApp.showAlert("V2 "+message);
         }
 
 
