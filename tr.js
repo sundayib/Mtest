@@ -47,8 +47,9 @@ const tmer =setInterval(txt, 1000);
 function initfunc()
 {
     try{   
-  lditems();   
-Telegram.WebApp.Ready() ;             
+    
+Telegram.WebApp.Ready(); 
+    lditems();           
      Telegram.WebApp.disableVerticalSwipes(); 
      initData= Telegram.WebApp.initData;    
       id=  Telegram.WebApp.initData.Id;  
