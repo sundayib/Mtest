@@ -48,7 +48,7 @@ function initfunc()
 {
     try{   
     
-Telegram.WebApp.Ready(); 
+Telegram.WebApp.ready(); 
     lditems();           
      Telegram.WebApp.disableVerticalSwipes(); 
      initData= Telegram.WebApp.initData;    
