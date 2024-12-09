@@ -57,7 +57,7 @@ function initfunc()
      document.getElementById('tc').innerHTML ="Task Coins : "+TaskCoins;
                                                            
        
-    }catch(er){alert(er);}              
+    }catch(er){showAlert(er);}              
 }
   initfunc();
   function tx(args){
@@ -294,7 +294,7 @@ let m = d.getMinutes() * 60;
           var diff = now.getTime() - activedt.getTime();
     autofarm= Math.floor((diff )/ (1000)) - sec;
      
- alert(new Date().toString());         
+ showAlert(new Date().toString());         
      /*
 var days = Math.floor(diff / (1000 * 60 * 60 * 24));
 diff -=  days * (1000 * 60 * 60 * 24);
@@ -455,7 +455,7 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
 
 function showAlert(message) {
          
-            Telegram.WebApp.showAlert(message);
+            Telegram.WebApp.showAlert("V1 "+message);
         }
 
 
