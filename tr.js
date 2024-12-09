@@ -386,7 +386,7 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                     
                 }
             });
-          } catch(err){ alert(err);}
+          } catch(err){ showAlert("setitem "+err);}
     }
 
 
@@ -412,7 +412,8 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
            let keys= ["autofarm","TaskCoins" ,"refId","ref","ask1","rwd","yts","signUpdt","activedt","lastLogindt"];
                         Telegram.WebApp.CloudStorage.getItems(keys, function(err, values) {
                             if (err) {
-                                showAlert('Error: ' + err);
+                                showAlert('Error reading 4m cloud: ' + err);
+                                      for (let i=0;i<keys.length;i++)save(keys[i],"z");
                             } else {
                                 
                            // if(goAhead(values[keys[0]])) autofarm = values[keys[0]]; else autofarm=0;
