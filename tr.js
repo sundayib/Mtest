@@ -41,7 +41,7 @@ const po= document.getElementById('pop');
 linearProgress1.appendTo('#percentage');
 
 
-const tmer =setInterval(txt, 10000);
+const tmer =setInterval(txt, 1000);
 
  
 function initfunc()
@@ -49,15 +49,16 @@ function initfunc()
     try{   
     
 Telegram.WebApp.ready(); 
-    lditems();           
+              
      Telegram.WebApp.disableVerticalSwipes(); 
      initData= Telegram.WebApp.initData;    
       id=  Telegram.WebApp.initData.Id;  
       fname=  Telegram.WebApp.initData.firstName;
+              alert(fname);
           document.getElementById('ic').innerHTML =fname[0];
      document.getElementById('nm').innerHTML ="Hi, "+fname;
      document.getElementById('tc').innerHTML ="Task Coins : "+TaskCoins;
-                                                           
+      lditems();                                                      
        
     }catch(er){showAlert(er);}              
 }
@@ -573,7 +574,7 @@ function npage(){
                     document.getElementById('p1').style.display = "block";
                        }  
 }
-//getdt();
+getdt();
 initfunc();
 
        
