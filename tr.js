@@ -52,9 +52,9 @@ Telegram.WebApp.ready();
               
      Telegram.WebApp.disableVerticalSwipes(); 
      initData= Telegram.WebApp.initData;    
-      id=  Telegram.WebApp.initData.Id;  
-      fname=  Telegram.WebApp.initData.firstName;
-              alert(fname);
+     // id=  Telegram.WebApp.initData.Id;  
+      fname=  Telegram.WebApp.WebAppInitData.user.first_name;
+              alert("Telegram.WebApp.initData:  "+Telegram.WebApp.initData);
           document.getElementById('ic').innerHTML =fname[0];
      document.getElementById('nm').innerHTML ="Hi, "+fname;
      document.getElementById('tc').innerHTML ="Task Coins : "+TaskCoins;
