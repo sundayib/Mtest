@@ -61,7 +61,7 @@ Telegram.WebApp.ready();
        
     }catch(er){showAlert(er);}              
 }
-    initfunc();
+    
   function tx(args){
             args.text = 'Claim '+sec; ++sec;
   }
@@ -314,7 +314,7 @@ diff -= seconds * (1000);
     */ 
 }       
     
-getdt();
+
 
 
   
@@ -573,8 +573,8 @@ function npage(){
                     document.getElementById('p1').style.display = "block";
                        }  
 }
-
-
+//getdt();
+initfunc();
 
        
           
