@@ -51,10 +51,10 @@ function initfunc()
 Telegram.WebApp.ready(); 
               
      Telegram.WebApp.disableVerticalSwipes(); 
-     initData= Telegram.WebApp.initData;    
+     //initData= Telegram.WebApp.initData;    
      // id=  Telegram.WebApp.initData.Id;  
-      fname=  Telegram.WebApp.user.toString();
-              alert("Telegram.WebApp.WebAppUser.first_name:  "+Telegram.WebApp.WebAppUser.first_name);
+      fname=  window.Telegram.WebApp.initDataUnsafe.first_name;
+              alert("window.Telegram.WebApp.initDataUnsafe.:  "+window.Telegram.WebApp.initDataUnsafe);
           document.getElementById('ic').innerHTML =fname[0];
      document.getElementById('nm').innerHTML ="Hi, "+fname;
      document.getElementById('tc').innerHTML ="Task Coins : "+TaskCoins;
