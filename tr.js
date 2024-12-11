@@ -61,7 +61,7 @@ Telegram.WebApp.ready();
        
     }catch(er){showAlert(er);}              
 }
-  initfunc();
+    initfunc();
   function tx(args){
             args.text = 'Claim '+sec; ++sec;
   }
@@ -281,9 +281,9 @@ var now = new Date();
  if(weekdt.getTime()>now.getTime() || now.getTime()- weekdt.getTime()> 2580000000){ showAlert("Your phone date is not correct. Set it and try again."); close();}
   if(now.getTime() -lastLogindt.getTime() > 2752000000 ) { autofarm=0; activedt=now; save("activedt",now.toString()); showAlert("It has been more than 30 days since your last login and because of this your bot coin has reset to zero. To avoid similar situation, try to login at least once every 30 days." )} 
  lastLogindt=now;
-      
+       
   save("activedt",now.toString()); 
-          
+           
     if(signUpdt.getTime()-360 > now.getTime) save("signUpdt",now.toString());
          // save("lastLogindt", lastLogindt.toString());
      //sec = diff - days * (1000 * 60 * 60 * 24);
@@ -388,7 +388,7 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                     
                 }
             });
-          } catch(err){ showAlert("setitem "+err);}
+          } catch(err){ showAlert("setittem "+err);}
     }
 
 
@@ -456,8 +456,8 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
 }
 
 function showAlert(message) {
-         
-            Telegram.WebApp.showAlert("V2 "+message);
+         alert(message);
+            //Telegram.WebApp.showAlert("V2 "+message);
         }
 
 
@@ -468,7 +468,7 @@ function showAlert(message) {
 
 
 
-
+ 
 
 // PAGE 3
 
