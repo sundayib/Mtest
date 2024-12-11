@@ -41,7 +41,7 @@ const po= document.getElementById('pop');
 linearProgress1.appendTo('#percentage');
 
 
-const tmer =setInterval(txt, 1000);
+const tmer =setInterval(txt, 10000);
 
  
 function initfunc()
@@ -73,7 +73,7 @@ function txt(){
        if(sec==86000) {sec=0;   autofarm +=86000;}
          document.getElementById('auto').innerHTML ='Bot coin : '+autofarm;
              
-          document.getElementById('ic').innerHTML =fname[0];
+         // document.getElementById('ic').innerHTML =fname[0];
      document.getElementById('nm').innerHTML ="Hi, "+fname;
                                  
           //clearInterval(tmer);
