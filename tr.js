@@ -254,7 +254,7 @@ function getdt()
 var weekdt = new Date("16/Nov/2024 20:30:00");
 var now = new Date();
           
- if(weekdt.getTime()>now.getTime() || now.getTime()- weekdt.getTime()> 2580000000){ showAlert("Your phone date is not correct. Set it and try again."); close();}
+ if(weekdt.getTime()>now.getTime() || now.getTime()- weekdt.getTime()> 2580000000){ showAlert("Your phone date is not correct. Set it and try again. The app will close automatically."); /*close();*/}
   if(now.getTime() -lastLogindt.getTime() > 2752000000 ) { autofarm=0; activedt=now; save("activedt",now.toString()); showAlert("It has been more than 30 days since your last login and because of this your bot coin has reset to zero. To avoid similar situation, try to login at least once every 30 days." )} 
  lastLogindt=now;
        
@@ -267,12 +267,12 @@ var now = new Date();
           let d = new Date();
 let h = d.getHours() * 3600;
 let m = d.getMinutes() * 60;
- sec = d.getSeconds() + h  + m; 
-          
+ //sec = d.getSeconds() + h  + m; 
+      startValue =  d.getSeconds() + h  + m;   
           var diff = now.getTime() - activedt.getTime();
-    autofarm= Math.floor((diff )/ (1000)) - sec;
+    autofarm= Math.floor((diff )/ (1000)) - startValue;
      
- showAlert(new Date().toString());         
+ //showAlert(new Date().toString());         
      /*
 var days = Math.floor(diff / (1000 * 60 * 60 * 24));
 diff -=  days * (1000 * 60 * 60 * 24);
