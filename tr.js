@@ -46,7 +46,7 @@ Telegram.WebApp.ready();
               
      Telegram.WebApp.disableVerticalSwipes(); 
      //initData= Telegram.WebApp.initData;    
-     id2 =  Telegram.WebApp.initData.Id;  
+     id2 =  window.Telegram.WebApp.initDataUnsafe.user.id;  
       fname= window.Telegram.WebApp.initDataUnsafe.user.first_name;
               //navigator.clipboard.writeText(window.Telegram.WebApp.initData);
              // alert("initData:  "+window.Telegram.WebApp.initData);
