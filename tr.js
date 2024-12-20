@@ -495,9 +495,8 @@ function get(url){
 
  function gtim(str)
 {
-  let p= "http://sundayib.github.io/P/img/"+str+".jpg";
-  let r= p+str+".jpg";
-  //alert(r);
+  let p= "http://sundayib.github.io/P/img/10005.jpg";
+  
   return p;
 }
 
