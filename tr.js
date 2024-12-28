@@ -177,10 +177,10 @@ function getrefcode()
      function  requestWriteAccess() {
             Telegram.WebApp.requestWriteAccess(function(allowed) {
                 if (allowed) {
-                    alert'(Access granted)';
+                    alert('Access granted');
                     
                 } else {
-                  alert'(User declined this request)';
+                  alert('User declined this request');
                 }
             });
         }
