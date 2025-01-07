@@ -165,7 +165,7 @@ function showinvite()
 var en='KeWoVaQn5x',rfc;
 function getrefcode()
 {   let n='';
-          //alert(id2);
+          alert(id2);
   for(let i=0;i<id2.length;i++)
     {
    n=n+ en[id2[i]];
@@ -329,8 +329,8 @@ let m = d.getMinutes() * 60;
     save('ref',refcode);
     //send bot msg
      sendMsg(id+'===='+refcode);
-                               
-  }  else{if (isref)save('ref','noref');}
+                                
+  }  else{if (isref)save('ref','noref');   }
         /*  if(Params.has('ask'))
           {
             let  askcode=Params.get('ask');
@@ -362,7 +362,7 @@ function Award()
 }
 
 
-function save(key,value)
+async function  save(key,value)
 {
           try{
   Telegram.WebApp.setHeaderColor('#2e2e2e');
@@ -401,7 +401,7 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                    }
 
 
- function lditems() {
+ async function  lditems() {
             
            let keys= ["autofarm","TaskCoins" ,"refId","ref","ask1","rwd","yts","signUpdt","activedt","lastLogindt"];
                         Telegram.WebApp.CloudStorage.getItems(keys, function(err, values) {
@@ -417,7 +417,7 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                                   if(goAhead(values[keys[4]]))   ask1 = values[keys[4]]; else ask1 = "";
                                   if(goAhead(values[keys[5]]))   rwd = values[keys[5]]; else rwd = 0;
                                   if(goAhead(values[keys[6]]))  yts = values[keys[6]]; else yts = 0;
-                                  if(goAhead(values[keys[7]]))   signUpdt = new Date(values[keys[7]]); else signUpdt = new Date("16/Nov/2086 20:30:00");
+                                  if(goAhead(values[keys[7]]))   signUpdt = new Date(values[keys[7]]); else signUpdt = new Date();
                                    if(goAhead(values[keys[8]]))  activedt = new Date(values[keys[8]]);  else activedt = new Date() ;
                                   if(goAhead(values[keys[9]]))   lastLogindt = new Date(values[keys[9]]); else lastLogindt = new Date();
                               
@@ -432,16 +432,26 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                               document.getElementById('t9').innerHTML ="lastLogindt : "+lastLogindt;
                              // document.getElementById('t8').innerHTML ="activedt : "+activedt;
                               
-                              
                             }
                            
                         });
+      //await save(keys[0], autofarm);
+                              await save(keys[1], TaskCoins);
+                              await save(keys[2],refId );
+                              await save(keys[3],ref );
+                              await save(keys[4], ask1);
+                              await save(keys[5], rwd);
+                              await save(keys[6], yts);
+                              await save(keys[7], signUpdt);
+                              await save(keys[8], activedt);
+                             await save(keys[9], lastLogindt);
+                              
                     
         }
 
  function goAhead(o)
 {
-  if(o.length > 2) return true;else return false;       
+  if(o.length > 1) return true;else return false;       
 }
 
 
@@ -671,6 +681,21 @@ function get(url){
     else { if(fl>0){fl=fl-1; await glis(url2+ "List"+fl+".json"); movIndex= lis.length-9;ShowMovieList();  return;} showAlert("You are already on the first page.");}
 }
 
+async function delete2()
+{
+ Telegram.WebApp.CloudStorage.removeItem(key, function(err, deleted) {
+                if (err) {
+                    alert('Error: ' + err);
+                } else {
+                    if (deleted) {
+                        alert('Deleted' );
+                        }
+                        
+                    }
+                    
+                
+            });
+}
 /*function npage(){
           if(page==1){page=2;document.getElementById('p1').style.display = "none";
                     document.getElementById('container').style.display = "block";
