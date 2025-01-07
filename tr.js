@@ -230,7 +230,8 @@ function HandleTask(e)
           if(e==bt1){
     if(TaskToHandle==1)
           { 
-                    window.open(movieUrl);
+            Telegram.WebApp.openLink(movieUrl  ,{try_instant_view:false});
+            //window.open(movieUrl);
           }   
    else if(TaskToHandle==2)
           { 
@@ -453,6 +454,7 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
 {
   if(o.length > 1) return true;else return false;       
 }
+
 
 
    function  sendMsg(msg)
