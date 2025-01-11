@@ -2,7 +2,7 @@
 var sec=0,autofarm=0,TaskCoins=0,page=1,fname = 'Bossman',msg='message',movieUrl="",moviePage="", TaskToHandle=1,refId="",ref="",ask1="",rwd=0,yts="";
 var signUpdt;//= new Date("9/Dec/2089 00:00:00");
 var activedt;//= new Date("9/Dec/2024 00:00:00");
-	var lastLogindt= new Date();
+	var lastLogindt;//= new Date();
 
 var  startValue = 6000, initData,id2='537920146';
 
@@ -33,6 +33,7 @@ Array.from(circularProgress).forEach((progressBar) => {
  
 
 const tmer =setInterval(txt, 1000);
+const tmer2 =setTimeout(getdt, 7000);
 
  
 async function initfunc()
@@ -48,7 +49,7 @@ Telegram.WebApp.ready();
               //navigator.clipboard.writeText(window.Telegram.WebApp.initData);
              // alert("initData:  "+window.Telegram.WebApp.initData);
     await lditems();                                                      
-       await getdt();
+       
           document.getElementById('ic').innerHTML =fname[0];
      document.getElementById('nm').innerHTML ="Hi, "+fname;
      document.getElementById('tc').innerHTML ="Task Coins : "+TaskCoins;
@@ -63,7 +64,7 @@ async function txt(){
         sec =startValue; 
       
        if(sec==86000) {startValue=0;   autofarm +=86000;}
-      await getdt();
+      
          document.getElementById('auto').innerHTML ='Bot coin : '+autofarm;
              
          // document.getElementById('ic').innerHTML =fname[0];
@@ -306,7 +307,7 @@ let m = d.getMinutes() * 60;
       startValue =  d.getSeconds() + h  + m;   
           var diff = now.getTime() - activedt.getTime();
     autofarm= Math.floor((diff )/ (1000)) - startValue;
-     
+     if(autofarm<0)autofarm=0;
  
 }       
     
