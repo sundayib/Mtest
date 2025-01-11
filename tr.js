@@ -1,7 +1,7 @@
 
 var sec=0,autofarm=0,TaskCoins=0,page=1,fname = 'Bossman',msg='message',movieUrl="",moviePage="", TaskToHandle=1,refId="",ref="",ask1="",rwd=0,yts="";
-var signUpdt= new Date("9/Dec/2089 00:00:00");
-var activedt= new Date("9/Dec/2024 00:00:00");
+var signUpdt;//= new Date("9/Dec/2089 00:00:00");
+var activedt;//= new Date("9/Dec/2024 00:00:00");
 	var lastLogindt= new Date();
 
 var  startValue = 6000, initData,id2='537920146';
