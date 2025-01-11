@@ -48,7 +48,7 @@ Telegram.WebApp.ready();
               //navigator.clipboard.writeText(window.Telegram.WebApp.initData);
              // alert("initData:  "+window.Telegram.WebApp.initData);
     await lditems();                                                      
-        getdt();
+       await getdt();
           document.getElementById('ic').innerHTML =fname[0];
      document.getElementById('nm').innerHTML ="Hi, "+fname;
      document.getElementById('tc').innerHTML ="Task Coins : "+TaskCoins;
@@ -58,11 +58,12 @@ Telegram.WebApp.ready();
 }
     
   
-function txt(){   
+async function txt(){   
          //startValue=sec;
         sec =startValue; 
       
        if(sec==86000) {startValue=0;   autofarm +=86000;}
+      await getdt();
          document.getElementById('auto').innerHTML ='Bot coin : '+autofarm;
              
          // document.getElementById('ic').innerHTML =fname[0];
@@ -284,7 +285,7 @@ function HandleTask(e)
 //HOME ENDS
 
 
-function getdt()
+ async function getdt()
 {
           
 var weekdt = new Date("16/Dec/2024 20:30:00");
@@ -294,7 +295,7 @@ var now = new Date();
   if(now.getTime() -lastLogindt.getTime() > 2752000000 ) { autofarm=0; activedt=now; save("activedt",now.toString()); showAlert("It has been more than 30 days since your last login and because of this your bot coin has reset to zero. To avoid similar situation, try to login at least once every 30 days." )} 
  lastLogindt=now;
        
-  save("lastLogindt",now.toString()); 
+  /*save("lastLogindt",now.toString()); */
            
     if(signUpdt.getTime() > now.getTime) save("signUpdt",now.toString());
          
