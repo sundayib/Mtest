@@ -452,8 +452,135 @@ bbody {
         
 
 
- 
+  <debug style=" margin-bottom:100px"> 
+  <button onclick="cloud(0);">User 1</button>
+  <button onclick="cloud(1);">User 2</button>
+  <button onclick="cloud(2);">User 3</button>
+  <button onclick="cloud(3);">User 4</button>
+  <button onclick="cloud(4);">User 5</button>
+  <button onclick="cloud(5);">User 6</button>
+  <vw id="ff" style="display:flex;flex-direction: column;margin-bottom:100px ">
+    <obj> tttyy</obj>
+    <obj> ttty55y</obj>
+    
+  </vw>
+  </debug>
+  <script>
+  const nameOf = async(v) => (v).toString().replace(/[ |\(\)=>]/g,'').substring(5);
+ //const nameOf = varObj => Object.keys(varObj)[0];
 
+  //var u1,u2,u3,u4,u5,u6;
+  var u= [];// [u1,u2,u3,u4,u5,u6];
+  
+  function user(autofarm,TaskCoins ,refId,ref,ask1,rwd,yts,signUpdt,activedt,lastLogindt)
+  { 
+    this.autofarm=autofarm;
+    this.TaskCoins=TaskCoins;
+    this.refId=refId;
+    this.ref=ref;
+    this.ask1=ask1;
+    this.rwd=rwd;
+    this.yts=yts;
+    this.signUpdt=signUpdt;
+    this.activedt=activedt;
+    this.lastLogindt= lastLogindt;  
+                         
+                               
+  }
+  async function  savedebug(key,value)
+{
+          try{
+  Telegram.WebApp.setHeaderColor('#2e2e2e');
+                  
+Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
+                if (err) 
+                   {
+                     showAlert('Error: ' + err);
+                   } 
+           else {
+                    if (saved)
+                   {
+                        //bot 2 send msg
+                    }
+                    
+                }
+            });
+          } catch(err){ showAlert("setittem "+err);}
+    }
+  
+  function nu()
+  {
+    u[0]=new user(0,000000 ,'0gfuffffdh','0putrrgj','0ask',00,00,new Date("10/Dec/2024 20:30:00"),new Date("10/Dec/2024 20:30:00"),new Date("10/Dec/2024 20:30:00"));    
+    u[1]=new user(10,100000 ,'1gfuffffdh','1putrrgj','1ask',10,10,new Date("11/Dec/2024 20:30:00"),new Date("11/Dec/2024 20:30:00"),new Date("11/Dec/2024 20:30:00"));    
+    u[2]=new user(20,200000 ,'2gfuffffdh','2putrrgj','2ask',20,20,new Date("12/Dec/2024 20:30:00"),new Date("12/Dec/2024 20:30:00"),new Date("12/Dec/2024 20:30:00"));    
+    u[3]=new user(30,300000 ,'3gfuffffdh','3putrrgj','3ask',30,30,new Date("13/Dec/2024 20:30:00"),new Date("13/Dec/2024 20:30:00"),new Date("13/Dec/2024 20:30:00"));    
+    u[4]=new user(40,400000 ,'4gfuffffdh','4putrrgj','4ask',40,40,new Date("14/Dec/2024 20:30:00"),new Date("14/Dec/2024 20:30:00"),new Date("14/Dec/2024 20:30:00"));    
+    u[5]=new user(50,500000 ,'5gfuffffdh','5putrrgj','5ask',50,50,new Date("15/Dec/2024 20:30:00"),new Date("15/Dec/2024 20:30:00"),new Date("15/Dec/2024 20:30:00"));    
+    u[6]=new user(60,600000 ,'6gfuffffdh','6putrrgj','6ask',60,60,new Date("16/Dec/2024 20:30:00"),new Date("16/Dec/2024 20:30:00"),new Date("16/Dec/2024 20:30:00"));    
+              
+    //alert('created');
+  }
+  var uu;
+  async function cloud(x){  
+    let c=JSON.stringify(u[x]);
+    await savedebug('data',c);
+     //alert(c.length.toString());
+    alert(c);
+    
+      
+  }
+   //async function cloud(){ alert(await nameOf(()=>u[0].signUpdt) +'  '+  u1.signUpdt); }
+  async function  lditemsdebug() {
+            let res='';
+                    Telegram.WebApp.CloudStorage.getItem("data", function(err, value) {
+                            if (err) {
+                                showAlert('Error reading from cloud: ' + err);
+                                      //for (let i=0;i<keys.length;i++)save(keys[i],"z");
+                            } else {
+                              
+                              uu=JSON.parse(value);
+    uu.signUpdt =new Date(uu.signUpdt);
+    uu.activedt =new Date(uu.activedt);
+    uu.lastLogindt =new Date(uu.lastLogindt);
+    
+                         for(let prop in uu)
+                              { 
+                      if(uu[prop].toString().length >0){ }     
+                      else if(prop.toString()=="Task Coins"){ uu[prop]=0;}
+                      else if(prop.toString()=="refId"){ uu[prop]=getrefcode();}
+                      else if(prop.toString()=="ref"){uu[prop]="noref"; }
+                      else if(prop.toString()=="ask1"){ uu[prop]="nil";}
+                      else if(prop.toString()=="rwd"){ uu[prop]=0;}
+                      else if(prop.toString()=="yts"){uu[prop]=0; }
+                      else if(prop.toString()=="signUpdt"){ uu[prop]=new Date();}
+                      else if(prop.toString()=="activedt"){ uu[prop]=new Date();}
+                      else if(prop.toString()=="lastLogindt"){ uu[prop]=new Date();}
+                                
+                           res=res+' <obj>' +prop +' = '+uu[prop]+'</obj>' ;       
+                         }
+                        document.getElementById('ff').innerHTML=res;
+        
+                            }
+                           
+                        });
+    
+                    
+        }
+  
+  
+  nu();
+  lditemsdebug();
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
 </body>
