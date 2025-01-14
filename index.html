@@ -513,7 +513,7 @@ Telegram.WebApp.CloudStorage.setItem('data', saver, function(err, saved) {
     u[4]=new user(40,400000 ,'4gfuffffdh','4putrrgj','4ask',40,40,new Date("14/Dec/2024 20:30:00"),new Date("14/Dec/2024 20:30:00"),new Date("14/Dec/2024 20:30:00"));    
     u[5]=new user(50,500000 ,'5gfuffffdh','5putrrgj','5ask',50,50,new Date("15/Dec/2024 20:30:00"),new Date("15/Dec/2024 20:30:00"),new Date("15/Dec/2024 20:30:00"));    
     
-    u[6]=new user(60,300000 ,'6gfuffffdh','6putrrgj','6ask',60,60,new Date(),new Date(),new Date());    
+    u[6]=new user(60,300000 ,'','','6ask',60,60,new Date(),new Date(),new Date());    
               
     //alert('created');
   }
@@ -599,7 +599,7 @@ Telegram.WebApp.CloudStorage.setItem('data', saver, function(err, saved) {
                 if (err) {
                   alert('Error: ' + err);
                 } else {
-                    if (deleted) {return; }
+                    if (deleted) {alert('deleted');return; }
                       
                 }
   });
@@ -607,7 +607,7 @@ Telegram.WebApp.CloudStorage.setItem('data', saver, function(err, saved) {
 }
   
   nu();
-  lditemsdebug();
+ //lditemsdebug();
   const tmer2getQuery =setTimeout(getQuery, 1000);
 
   </script>
