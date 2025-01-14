@@ -453,7 +453,7 @@ bbody {
 
 
   <debug style=" margin-bottom:100px"> 
-  <button onclick="cloud(0);">User 1</button>
+  <button onclick="del();">del 1</button>
   <button onclick="cloud(1);">User 2</button>
   <button onclick="cloud(2);">User 3</button>
   <button onclick="cloud(3);">User 4</button>
@@ -467,11 +467,7 @@ bbody {
   </debug>
   <script>
   const nameOf = async(v) => (v).toString().replace(/[ |\(\)=>]/g,'').substring(5);
- //const nameOf = varObj => Object.keys(varObj)[0];
-
-  //var u1,u2,u3,u4,u5,u6;
-  var u= [];// [u1,u2,u3,u4,u5,u6];
-  
+  var u=[];// [u1,u2,u3,u4,u5,u6];
   function user(autofarm,TaskCoins ,refId,ref,ask1,rwd,yts,signUpdt,activedt,lastLogindt)
   { 
     this.autofarm=autofarm;
@@ -491,8 +487,8 @@ bbody {
 {
           try{
   Telegram.WebApp.setHeaderColor('#2e2e2e');
-                  
-Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
+     let saver =JSON.stringify(uu);              
+Telegram.WebApp.CloudStorage.setItem('data', saver, function(err, saved) {
                 if (err) 
                    {
                      showAlert('Error: ' + err);
@@ -505,18 +501,19 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                     
                 }
             });
-          } catch(err){ showAlert("setittem "+err);}
+          } catch(err){ showAlert("Error saving : "+err);}
     }
   
   function nu()
   {
-    u[0]=new user(0,000000 ,'0gfuffffdh','0putrrgj','0ask',00,00,new Date("10/Dec/2024 20:30:00"),new Date("10/Dec/2024 20:30:00"),new Date("10/Dec/2024 20:30:00"));    
+   u[0]=new user(0,000000 ,'0gfuffffdh','0putrrgj','0ask',00,00,new Date("10/Dec/2024 20:30:00"),new Date("10/Dec/2024 20:30:00"),new Date("10/Dec/2024 20:30:00"));    
     u[1]=new user(10,100000 ,'1gfuffffdh','1putrrgj','1ask',10,10,new Date("11/Dec/2024 20:30:00"),new Date("11/Dec/2024 20:30:00"),new Date("11/Dec/2024 20:30:00"));    
     u[2]=new user(20,200000 ,'2gfuffffdh','2putrrgj','2ask',20,20,new Date("12/Dec/2024 20:30:00"),new Date("12/Dec/2024 20:30:00"),new Date("12/Dec/2024 20:30:00"));    
     u[3]=new user(30,300000 ,'3gfuffffdh','3putrrgj','3ask',30,30,new Date("13/Dec/2024 20:30:00"),new Date("13/Dec/2024 20:30:00"),new Date("13/Dec/2024 20:30:00"));    
     u[4]=new user(40,400000 ,'4gfuffffdh','4putrrgj','4ask',40,40,new Date("14/Dec/2024 20:30:00"),new Date("14/Dec/2024 20:30:00"),new Date("14/Dec/2024 20:30:00"));    
     u[5]=new user(50,500000 ,'5gfuffffdh','5putrrgj','5ask',50,50,new Date("15/Dec/2024 20:30:00"),new Date("15/Dec/2024 20:30:00"),new Date("15/Dec/2024 20:30:00"));    
-    u[6]=new user(60,600000 ,'6gfuffffdh','6putrrgj','6ask',60,60,new Date("16/Dec/2024 20:30:00"),new Date("16/Dec/2024 20:30:00"),new Date("16/Dec/2024 20:30:00"));    
+    
+    u[6]=new user(60,300000 ,'6gfuffffdh','6putrrgj','6ask',60,60,new Date(),new Date(),new Date());    
               
     //alert('created');
   }
@@ -527,18 +524,18 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
      //alert(c.length.toString());
     alert(c);
     
-      
   }
    //async function cloud(){ alert(await nameOf(()=>u[0].signUpdt) +'  '+  u1.signUpdt); }
   async function  lditemsdebug() {
-            let res='';
+            let res='';let save=false;
                     Telegram.WebApp.CloudStorage.getItem("data", function(err, value) {
                             if (err) {
                                 showAlert('Error reading from cloud: ' + err);
                                       //for (let i=0;i<keys.length;i++)save(keys[i],"z");
                             } else {
-                              
-                              uu=JSON.parse(value);
+                        
+                       if(value.length<5){value= JSON.stringify(u[6]); alert("Welcome! You've been awarded 300,000 coins as a welcome bonus." ); }   
+    uu=JSON.parse(value);
     uu.signUpdt =new Date(uu.signUpdt);
     uu.activedt =new Date(uu.activedt);
     uu.lastLogindt =new Date(uu.lastLogindt);
@@ -547,9 +544,9 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                               { 
                       if(uu[prop].toString().length >0){ }     
                       else if(prop.toString()=="Task Coins"){ uu[prop]=0;}
-                      else if(prop.toString()=="refId"){ uu[prop]=getrefcode();}
-                      else if(prop.toString()=="ref"){uu[prop]="noref"; }
-                      else if(prop.toString()=="ask1"){ uu[prop]="nil";}
+                      else if(prop.toString()=="refId"){ /*uu[prop]=getrefcode();*/}
+                      else if(prop.toString()=="ref"){/*uu[prop]="noref";*/}
+                      else if(prop.toString()=="ask1"){ /*uu[prop]="nil";*/}
                       else if(prop.toString()=="rwd"){ uu[prop]=0;}
                       else if(prop.toString()=="yts"){uu[prop]=0; }
                       else if(prop.toString()=="signUpdt"){ uu[prop]=new Date();}
@@ -564,12 +561,55 @@ Telegram.WebApp.CloudStorage.setItem(key, value, function(err, saved) {
                            
                         });
     
-                    
+                  if(save)savedebug();    
         }
   
   
+  function getQuery(isref=false)
+{
+ //Params = new URLSearchParams(window.location.search);
+    Params = window.Telegram.WebApp.initDataUnsafe.start_param;
+  
+           if(Params.has('ask'))
+          {
+           let [p1,p2]=   Params.split("_") ;  
+ if(ask1 == p2)  
+           {
+              //Award() ;     
+           }                               
+          }
+        else if(Params.has('ref' && uu.ref.length < 4))
+  {
+    let refcode=Params.split('_')[1];
+    //save('ref',refcode);
+    //send bot msg
+    
+    let code=getrefcode();
+    uu.ref= refcode;
+    uu.refId= code;
+     Telegram.WebApp.sendData(code+'===='+refcode+'             Your referral link is : t.me/moviecoin/'+code);
+     savedebug();                          
+  }  else{if (isref)save('ref','noref');   }
+        
+}
+  
+  
+  function del(){
+  Telegram.WebApp.CloudStorage.removeItem( "data" , function(err, deleted) {
+                if (err) {
+                  alert('Error: ' + err);
+                } else {
+                    if (deleted) {return; }
+                      
+                }
+  });
+  
+}
+  
   nu();
   lditemsdebug();
+  const tmer2getQuery =setTimeout(getQuery, 1000);
+
   </script>
 
   
