@@ -487,16 +487,17 @@ bbody {
 {
           try{
   Telegram.WebApp.setHeaderColor('#2e2e2e');
-     let saver =JSON.stringify(uu);              
+     let saver ="";
+            try{saver=JSON.stringify(uu); }catch(x){alert(x);}           
 Telegram.WebApp.CloudStorage.setItem('data2', saver, function(err, saved) {
                 if (err) 
                    {
-                     showAlert('Error: ' + err);
+                     alert('Error: ' + err);
                    } 
            else {
                     if (saved)
                    {
-                        //bot 2 send msg
+                       alert('saved'); //bot 2 send msg
                     }
                     
                 }
@@ -519,10 +520,11 @@ Telegram.WebApp.CloudStorage.setItem('data2', saver, function(err, saved) {
   }
   var uu;
   async function cloud(x){  
-    let c=JSON.stringify(u[x]);
-    await savedebug('data',c);
+    uu=u[x];savedebug();
+    //let c=JSON.stringify(u[x]);
+    //await savedebug('data2',c);
      //alert(c.length.toString());
-    alert(c);
+    //alert(c);
     
   }
    //async function cloud(){ alert(await nameOf(()=>u[0].signUpdt) +'  '+  u1.signUpdt); }
@@ -596,7 +598,7 @@ Telegram.WebApp.CloudStorage.setItem('data2', saver, function(err, saved) {
   
   
   function del(){
-  Telegram.WebApp.CloudStorage.removeItem('data', function(err, deleted) {
+  Telegram.WebApp.CloudStorage.removeItem('data2', function(err, deleted) {
                 if (err) {
                   alert('Error: ' + err);
                 } else {
@@ -609,7 +611,7 @@ Telegram.WebApp.CloudStorage.setItem('data2', saver, function(err, saved) {
   
   nu();
  lditemsdebug();
-  const tmer2getQuery =setTimeout(getQuery, 2000);
+ // const tmer2getQuery =setTimeout(getQuery, 2000);
 
   </script>
 
